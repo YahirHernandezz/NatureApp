@@ -2,6 +2,7 @@ package com.example.natureapp.ui.theme.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -14,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -43,7 +45,7 @@ fun CardImage(image : String, title : String, description : String){
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(70.dp)
+                .height(IntrinsicSize.Min)
         ){
             Column(
                 modifier = Modifier
@@ -53,13 +55,15 @@ fun CardImage(image : String, title : String, description : String){
                 Text(
                     text = title,
                     color = MaterialTheme.colorScheme.contentColorFor(MaterialTheme.colorScheme.background),
-                    fontSize = 16.sp,
+                    fontSize = 18.sp,
                     fontWeight = FontWeight.Bold
                 )
                 Text(
                     text = description,
                     color = MaterialTheme.colorScheme.contentColorFor(MaterialTheme.colorScheme.background),
-                    fontSize = 14.sp
+                    fontSize = 15.sp,
+                    modifier = Modifier.fillMaxWidth(),
+                    overflow = TextOverflow.Clip
                 )
             }
         }
