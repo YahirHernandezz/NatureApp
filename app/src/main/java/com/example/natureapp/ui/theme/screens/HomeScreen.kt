@@ -1,7 +1,19 @@
 package com.example.natureapp.ui.theme.screens
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.example.natureapp.ui.theme.NatureAppTheme
+import com.example.natureapp.ui.theme.components.CardImage
 
 @Composable
 fun HomeScreen(innerPadding: PaddingValues){
@@ -17,4 +29,52 @@ fun HomeScreen(innerPadding: PaddingValues){
         //SAHARA
         "https://imagenes.eltiempo.com/files/image_1200_600/uploads/2022/07/18/62d568a914174.jpeg"
     )
+
+    val titleName = listOf(
+        "Madagascar, África",
+        "Isla Galapagos, Ecuador",
+        "Mar rosa, Galerazamba Colombia",
+        "Las Rockies, Canadá",
+        "Desierto Sahara, África"
+    )
+
+    val description = listOf(
+        "Isla exótica famosa por su biodiversidad única, hogar de especies endémicas como los lémures.",
+        "Archipiélago volcánico famoso por inspirar la teoría de la evolución de Darwin.",
+        "Laguna costera de color rosado por la alta salinidad, un fenómeno natural impresionante.",
+        "Majestuosa cadena montañosa con paisajes de glaciares, lagos cristalinos y abundante vida silvestre.",
+        "El desierto más grande del mundo, caracterizado por sus vastas dunas y condiciones extremas."
+    )
+
+    Box (
+        modifier = Modifier.fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+            .padding(top = 25.dp)
+    ){
+        Column (
+            modifier = Modifier.padding(10.dp)
+        ){
+            LazyColumn(){
+                items(images.size){
+                    CardImage(
+                        image = images[it],
+                        title = titleName[it],
+                        description = description[it]
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Preview(
+    showBackground = true,
+    showSystemUi = true
+)
+
+@Composable
+fun HomeScreenPreview(){
+    NatureAppTheme {
+        HomeScreen(innerPadding = PaddingValues(0.dp))
+    }
 }
